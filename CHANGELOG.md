@@ -1,5 +1,12 @@
 
 
+## [0.2.1](https://github.com/MateuszMG/name_examining_server/compare/1.1.0...0.2.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* **1:** add info about node requirements and correct first version ([4e38a98](https://github.com/MateuszMG/name_examining_server/commit/4e38a98bccce488dff6e2df8a277d18beae3284e))
+
 ## 1.1.0 (2023-07-20)
 
 
