@@ -1,0 +1,25 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "jsxSingleQuote": true,
+  "bracketSpacing": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^(.*)apollo/(.*)$",
+    "^(.*)config/(.*)$",
+    "^(.*)controllers/(.*)$",
+    "^(.*)middlewares/(.*)$",
+    "^(.*)modules/(.*)$",
+    "^(.*)routes/(.*)$",
+    "^(.*)types/(.*)$",
+    "^(.*)utils/(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+}
