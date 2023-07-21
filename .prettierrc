@@ -8,18 +8,17 @@
   "bracketSpacing": true,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^(.*)apollo/(.*)$",
     "^(.*)config/(.*)$",
     "^(.*)controllers/(.*)$",
     "^(.*)middlewares/(.*)$",
-    "^(.*)modules/(.*)$",
+    "^(.*)models/(.*)$",
     "^(.*)routes/(.*)$",
-    "^(.*)types/(.*)$",
     "^(.*)utils/(.*)$",
+    "^(.*)validations/(.*)$",
     "^[./]"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
   "importOrderCaseInsensitive": true,
-  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }
