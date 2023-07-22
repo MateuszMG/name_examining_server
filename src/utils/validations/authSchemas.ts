@@ -1,31 +1,33 @@
-import { joi } from './joiInstance';
+import * as Yup from 'yup';
 
-const joiSchemas = {
-  username: joi.string().required().trim().min(3).max(40).label('Username'),
-  password: joi
-    .string()
+const yupSchemas = {
+  username: Yup.string().required().trim().min(3).max(40).label('Username'),
+  password: Yup.string()
     .required()
     .trim()
     .min(6)
     .max(72)
-    .regex(/^(?=.*[A-Z])(?=.*\d)(?=.*[#$!.%& *?])[A-Za-z\d#$!.%& *?]{6,72}$/)
-    .message(
-      `Password must contain, one uppercase, one number and one special case character: # $ ! . % & * ? `,
+    .matches(
+      /^(?=.*[A-Z])(?=.*\d)(?=.*[#$!.%& *?])[A-Za-z\d#$!.%& *?]{6,72}$/,
+      'Password must contain, one uppercase, one number and one special case character: # $ ! . % & * ?',
     )
     .label('Password'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
+    .label('Confirmed password'),
 };
 
-const registerSchema = joi.object({
-  username: joiSchemas.username,
-  password: joiSchemas.password,
-  confirmPassword: joi
-    .valid(joi.ref('password'))
-    .error(() => new Error('Passwords must match')),
+const { confirmPassword, password, username } = yupSchemas;
+
+const registerSchema = Yup.object({
+  username,
+  password,
+  confirmPassword,
 });
 
-const loginSchema = joi.object({
-  username: joiSchemas.username,
-  password: joiSchemas.password,
+const loginSchema = Yup.object({
+  username,
+  password,
 });
 
 export { loginSchema, registerSchema };

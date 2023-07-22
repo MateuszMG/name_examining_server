@@ -17,9 +17,7 @@ import { loginSchema, registerSchema } from '../utils/validations/authSchemas';
 export const authController = {
   register: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { password, username } = await registerSchema.validateAsync(
-        req.body,
-      );
+      const { password, username } = await registerSchema.validate(req.body);
 
       const user = await UserModel.findOne({ username });
       if (user) throw createHttpError(409, errorMessages.usernameTaken);
@@ -59,7 +57,7 @@ export const authController = {
 
   login: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { password, username } = await loginSchema.validateAsync(req.body);
+      const { password, username } = await loginSchema.validate(req.body);
 
       const user = await UserModel.findOne({ username });
       if (!user)
