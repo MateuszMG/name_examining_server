@@ -9,11 +9,16 @@ import { errorHandler } from './middlewares/errorHandler';
 import { appRateLimiter } from './middlewares/rateLimiter';
 
 import { authRouter } from './routes/api/auth';
-import { userRouter } from './routes/api/user';
+import { savedRequestsRouter } from './routes/api/savedRequests';
 
 import { logger } from './utils/logger';
 
 const app = express();
+
+app.use('/', (req, res, next) => {
+  console.log('-');
+  next();
+});
 
 app.use(helmet());
 app.use(cors({ origin: config.WEBSITE_URLS, credentials: true }));
@@ -22,10 +27,11 @@ app.use(bodyParser.json());
 app.disable('x-powered-by');
 
 app.use(appRateLimiter);
-app.use(errorHandler);
 app.use(logger);
 
 app.use('/api', authRouter);
-app.use('/api', userRouter);
+app.use('/api', savedRequestsRouter);
+
+app.use(errorHandler);
 
 export { app };
