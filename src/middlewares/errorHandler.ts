@@ -17,9 +17,5 @@ export const errorHandler = (
     errorMessage = error.message;
   }
 
-  if (error.details?.length && error.details[0].message) {
-    errorMessage = error.details[0].message;
-  }
-
   res.status(statusCode).json({ message: errorMessage });
 };
