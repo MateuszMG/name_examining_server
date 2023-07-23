@@ -12,7 +12,7 @@ import {
   decodeRefreshToken,
   JWTData,
 } from '../utils/helpers/jwt';
-import { loginSchema, registerSchema } from '../utils/validations/authSchemas';
+import { loginSchema, registerSchema } from '../utils/schemas/auth';
 
 export const authController = {
   register: async (req: Request, res: Response, next: NextFunction) => {

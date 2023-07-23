@@ -3,11 +3,11 @@ import { NextFunction, Response } from 'express';
 import { SavedRequestInput, SavedRequestModel } from '../models/savedRequest';
 
 import { controllerResponseTimeHistogram } from '../utils/metrics';
-import { AppRequest } from '../utils/types';
 import {
   getSavedRequestsSchema,
   saveRequestSchema,
-} from '../utils/validations/savedRequests';
+} from '../utils/schemas/savedRequests';
+import { AppRequest } from '../utils/types';
 
 export const savedRequestsController = {
   getSavedRequests: async (
