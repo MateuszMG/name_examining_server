@@ -6,10 +6,15 @@ import helmet from 'helmet';
 import { config } from './config/config';
 
 import { errorHandler } from './middlewares/errorHandler';
+import {
+  httpRequestCounterHandler,
+  restResponseTimeHistogramHandler,
+} from './middlewares/metrics';
 import { appRateLimiter } from './middlewares/rateLimiter';
 
 import { authRouter } from './routes/api/auth';
 import { savedRequestsRouter } from './routes/api/savedRequests';
+import { metricsRouter } from './routes/web/metrics';
 
 import { logger } from './utils/logger';
 
@@ -29,6 +34,10 @@ app.disable('x-powered-by');
 app.use(appRateLimiter);
 app.use(logger);
 
+app.use(httpRequestCounterHandler);
+app.use(restResponseTimeHistogramHandler);
+
+app.use('/', metricsRouter);
 app.use('/api', authRouter);
 app.use('/api', savedRequestsRouter);
 

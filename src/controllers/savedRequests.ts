@@ -2,6 +2,7 @@ import { NextFunction, Response } from 'express';
 
 import { SavedRequestInput, SavedRequestModel } from '../models/savedRequest';
 
+import { controllerResponseTimeHistogram } from '../utils/metrics';
 import { AppRequest } from '../utils/types';
 import {
   getSavedRequestsSchema,
@@ -14,6 +15,8 @@ export const savedRequestsController = {
     res: Response,
     next: NextFunction,
   ) => {
+    const timer = controllerResponseTimeHistogram.startTimer();
+
     try {
       const userId = req.user!._id;
 
@@ -34,12 +37,17 @@ export const savedRequestsController = {
           total: documentsCount,
         },
       });
+
+      timer({ method: req.method, route: req.originalUrl, success: 'true' });
     } catch (error) {
+      timer({ method: req.method, route: req.originalUrl, success: 'false' });
       next(error);
     }
   },
 
   saveRequest: async (req: AppRequest, res: Response, next: NextFunction) => {
+    const timer = controllerResponseTimeHistogram.startTimer();
+
     try {
       const userId = req.user!._id;
 
@@ -66,8 +74,11 @@ export const savedRequestsController = {
         }).save();
       }
 
-      return res.status(201);
+      res.sendStatus(201);
+
+      timer({ method: req.method, route: req.originalUrl, success: 'true' });
     } catch (error) {
+      timer({ method: req.method, route: req.originalUrl, success: 'false' });
       next(error);
     }
   },
