@@ -14,9 +14,9 @@ import { appRateLimiter } from './middlewares/rateLimiter';
 
 import { authRouter } from './routes/api/auth';
 import { savedRequestsRouter } from './routes/api/savedRequests';
-import { metricsRouter } from './routes/web/metrics';
 
 import { logger } from './utils/logger';
+import { metrics } from './utils/metrics';
 import { swaggerDocs } from './utils/swagger';
 
 const app = express();
@@ -38,11 +38,12 @@ app.use(logger);
 app.use(httpRequestCounterHandler);
 app.use(restResponseTimeHistogramHandler);
 
-app.use('/', metricsRouter);
 app.use('/api', authRouter);
 app.use('/api', savedRequestsRouter);
 
 app.use(errorHandler);
+
+metrics(app);
 swaggerDocs(app);
 
 export { app };

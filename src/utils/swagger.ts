@@ -36,7 +36,6 @@ const options: swaggerJsdoc.Options = {
 const swaggerSpec = swaggerJsdoc(options);
 
 export const swaggerDocs = (app: Express) => {
-  // @ts-ignore
   app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   app.get('/docs.json', (req: Request, res: Response) => {

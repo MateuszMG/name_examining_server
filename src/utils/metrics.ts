@@ -1,6 +1,7 @@
+import { Express } from 'express';
 import PromClient from 'prom-client';
 
-PromClient.collectDefaultMetrics();
+import { config } from '../config/config';
 
 export const restResponseTimeHistogram = new PromClient.Histogram({
   name: 'rest_response_time_duration_seconds',
@@ -21,3 +22,14 @@ export const httpRequestCounter = new PromClient.Counter({
 });
 
 export { PromClient };
+
+export const metrics = (app: Express) => {
+  PromClient.collectDefaultMetrics();
+
+  app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', PromClient.register.contentType);
+    res.send(await PromClient.register.metrics());
+  });
+
+  console.log(`Metrics available at http://localhost:${config.PORT}`);
+};
