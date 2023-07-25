@@ -27,7 +27,8 @@ export const savedRequestsController = {
       const savedRequests = await SavedRequestModel.find({ userId })
         .sort({ updatedAt: 'asc' })
         .limit(limit)
-        .skip(page * limit);
+        .skip(page * limit)
+        .select(['-__v', '-userId']);
 
       res.json({
         savedRequests,
