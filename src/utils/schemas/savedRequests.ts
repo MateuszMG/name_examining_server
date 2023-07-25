@@ -29,12 +29,121 @@ const nationalized = Yup.object({
   name,
 });
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    SaveRequestInput:
+ *      type: object
+ *      required:
+ *        - genderized
+ *        - name
+ *        - nationalized
+ *      properties:
+ *        genderized:
+ *          type: object
+ *          properties:
+ *            count:
+ *              type: number
+ *              default: 123
+ *            gender:
+ *              type: string
+ *              default: male
+ *            name:
+ *              type: string
+ *              default: serchedName
+ *            probability:
+ *              type: number
+ *              default: 1
+ *        name:
+ *          type: string
+ *          default: serchedName
+ *        nationalized:
+ *          type: object
+ *          properties:
+ *            count:
+ *              type: number
+ *              default: 234
+ *            country:
+ *              type: array
+ *              items:
+ *                type: object
+ *                properties:
+ *                  country_id:
+ *                    type: string
+ *                    default: PL
+ *                  probability:
+ *                    type: number
+ *                    default: 1
+ *            name:
+ *              type: string
+ *              default: serchedName
+ */
 export const saveRequestSchema = Yup.object({
   genderized,
   name,
   nationalized,
 });
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    GetSavedRequestsInput:
+ *      type: object
+ *      required:
+ *        - limit
+ *        - page
+ *      properties:
+ *        limit:
+ *          type: number
+ *          default: 10
+ *        page:
+ *          type: number
+ *          default: 0
+ *    GetSavedRequestsResponse:
+ *       type: object
+ *       properties:
+ *         _id:
+ *           type: string
+ *         genderized:
+ *           type: object
+ *           properties:
+ *             count:
+ *               type: number
+ *             gender:
+ *               type: string
+ *             name:
+ *               type: string
+ *             probability:
+ *               type: number
+ *         name:
+ *           type: string
+ *         nationalized:
+ *           type: object
+ *           properties:
+ *             count:
+ *               type: number
+ *             country:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   country_id:
+ *                     type: string
+ *                   probability:
+ *                     type: number
+ *             name:
+ *               type: string
+ *         savingTimes:
+ *           type: array
+ *           items:
+ *             type: number
+ *         createdAt:
+ *           type: string
+ *         updatedAt:
+ *           type: string
+ */
 export const getSavedRequestsSchema = Yup.object({
   limit,
   page,

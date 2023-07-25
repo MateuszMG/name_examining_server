@@ -17,6 +17,7 @@ import { savedRequestsRouter } from './routes/api/savedRequests';
 import { metricsRouter } from './routes/web/metrics';
 
 import { logger } from './utils/logger';
+import { swaggerDocs } from './utils/swagger';
 
 const app = express();
 
@@ -42,5 +43,6 @@ app.use('/api', authRouter);
 app.use('/api', savedRequestsRouter);
 
 app.use(errorHandler);
+swaggerDocs(app);
 
 export { app };

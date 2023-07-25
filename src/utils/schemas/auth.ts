@@ -22,11 +22,61 @@ const confirmPassword = Yup.string()
   .oneOf([Yup.ref('password')], 'Passwords must match')
   .label('Confirmed password');
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    RegisterInput:
+ *      type: object
+ *      required:
+ *        - username
+ *        - password
+ *        - passwordConfirmation
+ *      properties:
+ *        username:
+ *          type: string
+ *          default: Jone
+ *        password:
+ *          type: string
+ *          default: StrongPassword!1
+ *        passwordConfirmation:
+ *          type: string
+ *          default: StrongPassword!1
+ *    RegisterResponse:
+ *      type: object
+ *      properties:
+ *        accessToken:
+ *          type: string
+ */
+
 const registerSchema = Yup.object({
   username,
   password,
   confirmPassword,
 });
+
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    LoginInput:
+ *      type: object
+ *      required:
+ *        - username
+ *        - password
+ *      properties:
+ *        username:
+ *          type: string
+ *          default: Jone
+ *        password:
+ *          type: string
+ *          default: StrongPassword!1
+ *    LoginResponse:
+ *      type: object
+ *      properties:
+ *        accessToken:
+ *          type: string
+ */
 
 const loginSchema = Yup.object({
   username,
