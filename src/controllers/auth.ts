@@ -111,7 +111,7 @@ export const authController = {
         roles: user.roles,
       });
 
-      return res.json({ accessToken });
+      res.json({ accessToken });
     } catch (error) {
       next(error);
     }
@@ -131,7 +131,7 @@ export const authController = {
 
       await UserModel.findByIdAndUpdate(user._id, { refreshToken: '' });
 
-      return res.sendStatus(200);
+      res.sendStatus(200);
     } catch (error) {
       next(error);
     }
