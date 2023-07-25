@@ -3,7 +3,15 @@ import * as Yup from 'yup';
 const count = Yup.number().required().min(0).max(1_000_000).label('Count');
 const country_id = Yup.string().required().trim().max(3).label('Country_id');
 const gender = Yup.string().required().trim().max(6).label('Gender');
-const name = Yup.string().required().trim().max(100).label('Name');
+const name = Yup.string()
+  .required()
+  .trim()
+  .max(100)
+  .matches(
+    /^([A-Za-z\u00C0-\u00D6\u00D8-\u00f6\u00f8-\u00ff\s]*)$/gi,
+    'Name can only contain Latin letters.',
+  )
+  .label('Name');
 const probability = Yup.number().required().min(0).max(1).label('Probability');
 
 const limit = Yup.number().default(10).min(1).max(200).label('Limit');
