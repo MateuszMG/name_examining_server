@@ -31,5 +31,5 @@ export const metrics = (app: Express) => {
     res.send(await PromClient.register.metrics());
   });
 
-  console.log(`Metrics available at http://localhost:${config.PORT}`);
+  console.log(`Metrics available at http://localhost:${config.PORT}/metrics`);
 };
