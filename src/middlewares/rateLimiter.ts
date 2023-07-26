@@ -4,12 +4,12 @@ const tenMinutes = 1000 * 60 * 10;
 
 const appRateLimiter = expressRateLimit({
   windowMs: tenMinutes,
-  max: 20,
+  max: 100,
 });
 
 const authRateLimiter = expressRateLimit({
   windowMs: tenMinutes,
-  max: 5,
+  max: 10,
 });
 
 export { appRateLimiter, authRateLimiter };

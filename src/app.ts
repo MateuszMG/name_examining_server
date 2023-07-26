@@ -21,11 +21,6 @@ import { swaggerDocs } from './utils/swagger';
 
 const app = express();
 
-app.use('/', (req, res, next) => {
-  console.log('-');
-  next();
-});
-
 app.use(helmet());
 app.use(cors({ origin: config.WEBSITE_URLS, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
