@@ -57,16 +57,14 @@ export const savedRequestsController = {
 
       const existedRequest = await SavedRequestModel.findOne({ userId, name });
 
-      let savedRequest;
-
       if (existedRequest) {
-        savedRequest = await SavedRequestModel.findByIdAndUpdate(
+        await SavedRequestModel.findByIdAndUpdate(
           existedRequest._id,
           { savingTimes: [...existedRequest.savingTimes, Date.now()] },
           { new: true },
         );
       } else {
-        savedRequest = await new SavedRequestModel<SavedRequestInput>({
+        await new SavedRequestModel<SavedRequestInput>({
           genderized,
           name,
           nationalized,

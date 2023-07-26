@@ -46,20 +46,6 @@ savedRequestsRouter.get(
   savedRequestsController.getSavedRequests,
 );
 
-// *     security:
-// *      - BearerAuth: []
-// *     parameters:
-// *      - in: header
-// *        name: accessToken
-// *        schema:
-// *          type: string
-// *        required: true
-// *      - in: cookie
-// *        name: refreshToken
-// *        schema:
-// *          type: string
-// *        required: true
-
 /**
  * @openapi
  * '/api/savedRequests':
