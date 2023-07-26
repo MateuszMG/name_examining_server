@@ -1,5 +1,12 @@
 
 
+## [0.3.1](https://github.com/MateuszMG/name_examining_server/compare/0.3.0...0.3.1) (2023-07-26)
+
+
+### Bug Fixes
+
+* remove useless code ([8fd9c9f](https://github.com/MateuszMG/name_examining_server/commit/8fd9c9fe3742fb6244c270842d47b984e0b03c6f))
+
 ## [0.3.0](https://github.com/MateuszMG/name_examining_server/compare/0.2.1...0.3.0) (2023-07-26)
 
 
