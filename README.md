@@ -17,11 +17,11 @@
 
 ## Available scripts
 
-"start": "ts-node-dev src/server.ts -e js,ts,json,ejs",
-"format": "prettier --write 'src/\*_/_.{ts,tsx,js,json}' --config ./.prettierrc",
-"release": "release-it",
-"prepare": "husky install"
+- "start": "ts-node-dev src/server.ts -e js,ts,json,ejs",
+- "format": "prettier --write 'src/\*_/_.{ts,tsx,js,json}' --config ./.prettierrc",
+- "release": "release-it",
+- "prepare": "husky install"
 
 ### Other
 
-Node requirements: "^14.18.0 || ^16.14.0 || >=18.0.0".
+- Node requirements: "^14.18.0 || ^16.14.0 || >=18.0.0".
