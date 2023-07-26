@@ -1,5 +1,12 @@
 
 
+## [0.3.2](https://github.com/MateuszMG/name_examining_server/compare/0.3.1...0.3.2) (2023-07-26)
+
+
+### Bug Fixes
+
+* repair README format ([a57f4d8](https://github.com/MateuszMG/name_examining_server/commit/a57f4d889fef81bcfda949f0580edf8eac79ebcf))
+
 ## [0.3.1](https://github.com/MateuszMG/name_examining_server/compare/0.3.0...0.3.1) (2023-07-26)
 
 
